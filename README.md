@@ -6,7 +6,7 @@
 
  date    : 2023/11/01
 
- update  :
+ update  : 2023/11/02
 
 ***
 ### Summary
@@ -16,6 +16,8 @@ hono + vite + pages + preact.js + D1,  sample
 
 ***
 ### blog 
+
+https://zenn.dev/knaka0209/scraps/8bd804167023c0
 
 ***
 
