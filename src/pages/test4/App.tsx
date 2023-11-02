@@ -9,14 +9,13 @@ console.log(props);
     <Layout>
         <h1>Test4</h1>
         <p>SSR-List</p>
+        <hr class="my-2" />
         <label>Title:</label>
         <input type="text" id="title" 
         class="border border-gray-400 rounded-md px-3 py-2 w-full focus:outline-none focus:border-blue-500"/>
         <br /><button id="save" class="btn-purple ms-2 my-2">Save</button>
         <hr class="my-2" />
         <div id="root"></div>
-        <hr class="my-2" />
-        <div id="root2"></div>
         <ul>
           {props.items.map((item) => {
             return (
