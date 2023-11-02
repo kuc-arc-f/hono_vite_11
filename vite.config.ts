@@ -12,6 +12,8 @@ export default defineConfig(({ mode }) => {
             './src/client.ts',
             './src/client/Page2.ts',
             './src/client/Page3.ts',
+            './src/client/Page4.ts',
+//            './public/static/globals.css'
           ],
           formats: ['es'],
           fileName: '[name]',
@@ -30,7 +32,11 @@ export default defineConfig(({ mode }) => {
       plugins: [
         pages(),
         devServer({
-          entry: 'src/index.tsx'
+          entry: 'src/index.tsx',
+          cf: {
+            d1Databases: ['DB'],
+            d1Persist: true
+          }
         })
       ]
     }
