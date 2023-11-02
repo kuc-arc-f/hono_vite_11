@@ -11,6 +11,7 @@ export const Layout: FC = (props) => {
         <title>{title}</title>
         {/* CSS */}
         {html`
+        <script src="https://cdn.tailwindcss.com"></script>
         <link href="/styles/main.css" rel="stylesheet">
         <link href="/styles/globals.css" rel="stylesheet">
         `}        

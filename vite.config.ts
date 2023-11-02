@@ -13,7 +13,6 @@ export default defineConfig(({ mode }) => {
             './src/client/Page2.ts',
             './src/client/Page3.ts',
             './src/client/Page4.ts',
-//            './public/static/globals.css'
           ],
           formats: ['es'],
           fileName: '[name]',

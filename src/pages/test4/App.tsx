@@ -1,3 +1,5 @@
+// SSR: jsxレンダリング
+
 import type { FC } from 'hono/jsx'
 import { html } from 'hono/html'
 import {Layout} from '../layout';
@@ -7,7 +9,7 @@ console.log(props);
     //
     return (
     <Layout>
-        <h1>Test4</h1>
+        <h1 class="text-4xl font-bold">Test4</h1>
         <p>SSR-List</p>
         <hr class="my-2" />
         <label>Title:</label>
@@ -27,7 +29,7 @@ console.log(props);
             );
           })}
         </ul>        
-        <hr />
+        <hr class="my-12" />
         {/* JS */}
         {import.meta.env.PROD ? (
             <script  type="module" src="/static/Page4.js"></script>
