@@ -10,23 +10,12 @@ const app = new Hono()
 import testRouter from './routes/test';
 //
 import {Layout} from './pages/layout';
+import Top from './pages/Top';
 import Test1 from './pages/test/App';
 import Test3 from './pages/test3/App';
 import Test4 from './pages/test4/App';
-//
-const Top: FC<{ messages: string[] }> = (props: { messages: string[] }) => {
-  return (
-    <Layout title="Welcome Top">
-      <h1 class="text-4xl font-bold">Hello Hono!</h1>
-      <hr />
-      <ul>
-        {props.messages.map((message) => {
-          return (<li class="my-2" >{message}!!</li>)
-        })}
-      </ul>
-    </Layout>
-  )
-}
+import Test5 from './pages/test5/App';
+
 //
 app.get('/', (c) => {
   const messages = ['Good Morning', 'Good Evening', 'Good Night']
@@ -44,6 +33,11 @@ app.get('/test4', async (c) => {
 console.log(items);
   return c.html(<Test4 items={items} />);
 });
+app.get('/test5', async (c) => { 
+//  return c.html(<Test5 items={[]} />);
+  return c.html(<Test5 />);
+});
+
 /* tasks */
 app.get('/tasks', async (c) => { 
   const items = await testRouter.get_list(c, c.env.DB);
