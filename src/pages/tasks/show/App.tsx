@@ -27,11 +27,18 @@ console.log(props.item);
             </script>`
             } 
             <button id="btn_delete" class="btn-red ms-2 my-2">Delete</button>
-            {html`<script src="/js/tasks/delete.js?${timeStamp}"></script>`}
+            {/* TS */}
+            {import.meta.env.PROD ? (
+                <script  src="/static/TaskShow.js"></script>
+            ) : (
+                <script src="/src/client/TaskShow.ts"></script>
+            )}            
         </div>
     </Layout>
     )
 }
+export default TaskShow;
 /*
 {html`<script type="text/babel" src="/js/tasks/show.js?${timeStamp}"></script>`}  
+            {html`<script src="/js/tasks/delete.js?${timeStamp}"></script>`}
 */

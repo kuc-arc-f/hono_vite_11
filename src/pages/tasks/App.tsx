@@ -14,11 +14,16 @@ const TaskIndex: FC<{ items: any[], page: string }> = (props: { items: any[], pa
     if(beforePage <= 1) { beforePage = 1;}
   }
   //
-  const timeStamp = Date.now();
   return (
     <Layout>
       <div >
         <h1 class="text-4xl font-bold">Tasks-index</h1>
+        <hr class="my-2" />
+        <label>Title:</label>
+        <input type="text" id="title" 
+        class="border border-gray-400 rounded-md px-3 py-2 w-full focus:outline-none focus:border-blue-500"/>
+        <br />
+        <button id="save" class="btn-purple ms-2 my-2">Save</button>
         <hr class="my-2" />
         <ul>
           {props.items.map((item) => {
@@ -42,6 +47,11 @@ const TaskIndex: FC<{ items: any[], page: string }> = (props: { items: any[], pa
         </div>
         <hr class="my-8" />
       </div>
+      {import.meta.env.PROD ? (
+            <script  type="module" src="/static/TaskIndex.js"></script>
+      ) : (
+          <script type="module" src="/src/client/TaskIndex.ts"></script>
+      )}        
     </Layout>
   )
 }

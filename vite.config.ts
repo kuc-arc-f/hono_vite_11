@@ -23,6 +23,8 @@ export default defineConfig(({ mode }) => {
             './src/client/Page3.ts',
             './src/client/Page4.ts',
             './src/client/Page5.ts',
+            './src/client/TaskShow.ts',
+            './src/client/TaskIndex.ts',
           ],
           formats: ['es'],
           fileName: '[name]',
