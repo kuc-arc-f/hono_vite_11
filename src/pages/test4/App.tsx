@@ -22,9 +22,10 @@ console.log(props);
           {props.items.map((item) => {
             return (
             <li key={item.id}>
-              <a href={`/test/${item.id}`}><h3 class="text-3xl font-bold">{item.title}</h3></a>
+              <a href={`/test/${item.id}`}><h3 class="text-3xl font-bold">{item.title}</h3>
+              </a>
               <p>id={item.id}</p>
-              <hr />
+              <hr class="my-2" />
             </li>
             );
           })}

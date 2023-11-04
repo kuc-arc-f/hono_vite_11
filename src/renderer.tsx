@@ -12,6 +12,9 @@ export const renderer = jsxRenderer(
     return (
       <html>
         <head>
+          <link href="/static/style.css" rel="stylesheet" />
+          <link href="/static/globals.css" rel="stylesheet" />
+          <link href="/static/main.css" rel="stylesheet" />
           {import.meta.env.PROD ? (
             <script type="module" src="/static/client.js"></script>
           ) : (
@@ -19,7 +22,10 @@ export const renderer = jsxRenderer(
           )}
           <title>{title}</title>
         </head>
-        <body>{children}</body>
+        <body>
+          <div id="app"></div>
+          {children}
+        </body>
       </html>
     )
   },

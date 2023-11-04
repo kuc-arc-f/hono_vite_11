@@ -1,14 +1,13 @@
 import { Hono } from 'hono'
 import type { Database } from '@cloudflare/d1'
-
+//import { renderer } from './renderer';
 interface Env {
   DB: Database
 }
 const app = new Hono()
-
 //routes
 import testRouter from './routes/test';
-//
+//pages
 import {Layout} from './pages/layout';
 import Top from './pages/Top';
 import Test1 from './pages/test/App';
@@ -23,7 +22,7 @@ app.get('/', (c) => {
 })
 /* test */
 app.get('/test1', async (c) => { 
-  return c.html(<Test1 items={[]} />);
+  return c.render(<Test1 items={[]} />);
 });
 app.get('/test3', async (c) => { 
   return c.html(<Test3 items={[]} />);
@@ -34,10 +33,8 @@ console.log(items);
   return c.html(<Test4 items={items} />);
 });
 app.get('/test5', async (c) => { 
-//  return c.html(<Test5 items={[]} />);
   return c.html(<Test5 />);
 });
-
 /* tasks */
 app.get('/tasks', async (c) => { 
   const items = await testRouter.get_list(c, c.env.DB);

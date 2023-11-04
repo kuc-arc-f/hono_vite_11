@@ -5,7 +5,8 @@ import { html } from 'hono/html'
 
 const Top: FC<{ messages: string[] }> = (props: { messages: string[] }) => {
   return (
-    <Layout title="Welcome Top">
+  <Layout>
+    <div>
       <h1 class="text-4xl font-bold">Hello Hono !!!</h1>
       <hr />
       <ul>
@@ -13,7 +14,9 @@ const Top: FC<{ messages: string[] }> = (props: { messages: string[] }) => {
           return (<li class="my-2" >{message}!!</li>)
         })}
       </ul>
-    </Layout>
+    </div>
+
+  </Layout>
   )
 }
 export default Top;
