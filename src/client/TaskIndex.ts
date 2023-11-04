@@ -1,12 +1,6 @@
 
 console.log("#Page4.client.ts");
 //
-import { h, Component, render } from 'preact';
-import htm from 'htm';
-
-//const html = htm.bind(h);
-//const elem = document.getElementById("root");
-//
 const TaskIndex = {
     /**
      *
@@ -23,13 +17,18 @@ const TaskIndex = {
             if(title) {
                 titleValue = title.value;
             }
+            let contentValue = "";
+            const content = document.querySelector("#content") as HTMLInputElement;
+            if(content) {
+                contentValue = content.value;
+            }              
             const item = {
                 title: titleValue,
-                content: "",
+                content: contentValue,
             }
 console.log("title=", titleValue);
             const body = JSON.stringify(item);		
-            const res = await fetch("/api/test/create", {
+            const res = await fetch("/api/tasks/create", {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},      
                 body: body
