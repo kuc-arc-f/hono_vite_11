@@ -18,7 +18,7 @@ import Test5 from './pages/test5/App';
 /* tasks */
 import TaskIndex from './pages/tasks/App';
 import TaskShow from './pages/tasks/show/App';
-import {TaskEdit} from './pages/tasks/edit/App';
+import TaskEdit from './pages/tasks/edit/App';
 //
 app.get('/', (c) => {
   const messages = ['Good Morning', 'Good Evening', 'Good Night']
@@ -40,12 +40,6 @@ app.get('/test5', async (c) => {
   return c.html(<Test5 />);
 });
 /* tasks */
-/*
-app.get('/tasks', async (c) => { 
-  const items = await testRouter.get_list(c, c.env.DB);
-  return Response.json({ret: "OK", data: items});
-});
-*/
 app.get('/tasks', async (c) => { 
   let page = c.req.query('page');
   if(!page) { page = '1';}
@@ -60,8 +54,14 @@ console.log("id=", id);
 console.log(item);
   return c.html(<TaskShow item={item} id={Number(id)} />);
 });
-//TaskShow
-
+//TaskEdit
+app.get('/tasks_edit/:id', async (c) => { 
+  const {id} = c.req.param();
+console.log("id=", id);
+  const item = await testRouter.get(c, c.env.DB, id);
+console.log(item);
+  return c.html(<TaskEdit item={item} id={Number(id)} />);
+});
 /******
 API
 ******/

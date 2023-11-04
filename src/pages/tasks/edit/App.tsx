@@ -2,8 +2,8 @@ import type { FC } from 'hono/jsx'
 import { html } from 'hono/html'
 import {Layout} from '../../layout';
 //
-export const TaskEdit: FC<{ item: any, id: number }> = (props: { item: any, id: number }) => {
-console.log("#taskShow");
+const TaskEdit: FC<{ item: any, id: number }> = (props: { item: any, id: number }) => {
+console.log("#TaskEdit");
 console.log(props.item);
     const timeStamp = Date.now();
     return (
@@ -37,13 +37,24 @@ console.log(props.item);
             </script>`
             } 
             <button id="btn_delete" class="btn-red ms-2 my-2">Delete</button>
-            {html`<script src="/js/tasks/delete.js?${timeStamp}"></script>`}
-            {html`<script src="/js/tasks/edit.js?${timeStamp}"></script>`}
+            {/* TS */}
+            {import.meta.env.PROD ? (
+            <>
+                <script src="/static/TaskShow.js"></script>
+                <script src="/static/TaskEdit.js"></script>
+            </>
+            ) : (
+            <>
+                <script src="/src/client/TaskShow.ts"></script>
+                <script src="/src/client/TaskEdit.ts"></script>
+            </>
+            )} 
         </div>
     </Layout>
     )
 }
+export default TaskEdit;
 /*
-edit.js
-{html`<script type="text/babel" src="/js/tasks/show.js?${timeStamp}"></script>`}  
+{html`<script src="/js/tasks/delete.js?${timeStamp}"></script>`}
+{html`<script src="/js/tasks/edit.js?${timeStamp}"></script>`}
 */

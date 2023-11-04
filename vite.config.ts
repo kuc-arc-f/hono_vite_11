@@ -25,6 +25,7 @@ export default defineConfig(({ mode }) => {
             './src/client/Page5.ts',
             './src/client/TaskShow.ts',
             './src/client/TaskIndex.ts',
+            './src/client/TaskEdit.ts',
           ],
           formats: ['es'],
           fileName: '[name]',

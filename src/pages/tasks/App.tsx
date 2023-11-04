@@ -31,7 +31,13 @@ const TaskIndex: FC<{ items: any[], page: string }> = (props: { items: any[], pa
             <li key={item.id}>
               <a href={`/tasks/${item.id}`}><h3 class="text-3xl font-bold"
               >{item.title}</h3></a>
-              <p>id={item.id}, {item.createdAt}</p>
+              <p>ID: {item.id}, {item.createdAt}</p>
+              <a href={`/tasks/${item.id}`}>
+                  <button  class="btn-outline-purple ms-2 my-2">Show</button>
+              </a>
+              <a href={`/tasks_edit/${item.id}`}>
+                  <button  class="btn-outline-purple ms-2 my-2">Edit</button>
+              </a>              
               <hr />
             </li>
             );
