@@ -14,7 +14,10 @@ import Test1 from './pages/test/App';
 import Test3 from './pages/test3/App';
 import Test4 from './pages/test4/App';
 import Test5 from './pages/test5/App';
-
+/* tasks */
+import TaskIndex from './pages/tasks/App';
+import {TaskShow} from './pages/tasks/show/App';
+import {TaskEdit} from './pages/tasks/edit/App';
 //
 app.get('/', (c) => {
   const messages = ['Good Morning', 'Good Evening', 'Good Night']
@@ -36,10 +39,18 @@ app.get('/test5', async (c) => {
   return c.html(<Test5 />);
 });
 /* tasks */
+/*
 app.get('/tasks', async (c) => { 
   const items = await testRouter.get_list(c, c.env.DB);
-//  return c.html(<TaskIndex items={items} />);
   return Response.json({ret: "OK", data: items});
+});
+*/
+app.get('/tasks', async (c) => { 
+  let page = c.req.query('page');
+  if(!page) { page = '1';}
+console.log("page=", page);
+  const items = await testRouter.get_list_page(c, c.env.DB, page);
+  return c.html(<TaskIndex items={items} page={page} />);
 });
 
 /******

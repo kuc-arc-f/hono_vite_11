@@ -1,6 +1,7 @@
 //import { Hono } from "hono";
 import type { Database } from '@cloudflare/d1'
-//import {Test9} from '../views/test9/App';
+import LibPagenate from '../lib/LibPagenate';
+const perPage: number = 10;
 //
 interface Env {
     DB: Database
@@ -29,24 +30,6 @@ const Router = {
             return Response.json(retObj);
         } 
     },   
-/*
-    test9: async function(c, DB)
-    {
-        try{    
-            const result = await DB.prepare(`SELECT * FROM Task ORDER BY id DESC`).all();
-    console.log(result.results);
-            if(result.results.length < 1) {
-                console.error("Error, results.length < 1");
-                return Response.json({ret: "OK", data: []});
-            }
-            const s = renderToString(Test9(result.results));
-            return c.text(s);
-        } catch (e) {
-            console.error(e);
-            return Response.json(retObj);
-        } 
-    },  
-*/
     /**
      * route
      * @param
@@ -90,6 +73,36 @@ console.log("#get_list");
             return [];
         } 
     },
+    /**
+     *
+     * @param
+     *
+     * @return
+     */ 
+    get_list_page: async function(c, DB, page)
+    {
+console.log("#get_list");
+        try{    
+            const pinfo = LibPagenate.getPageStart(page, perPage);
+console.log(pinfo);
+            const sql = `
+            SELECT * FROM Task ORDER BY id DESC
+            LIMIT ${pinfo.end}
+            OFFSET ${pinfo.start};
+            `;
+console.log(sql);
+            const result = await DB.prepare(sql).all();
+//console.log(result.results);
+            if(result.results.length < 1) {
+                console.error("Error, results.length < 1");
+                return [];
+            }
+            return result.results;
+        } catch (e) {
+            console.error(e);
+            return [];
+        } 
+    },    
     /**
      *
      * @param
