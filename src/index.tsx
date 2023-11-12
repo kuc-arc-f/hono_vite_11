@@ -15,6 +15,8 @@ import Test1 from './pages/test/App';
 import Test3 from './pages/test3/App';
 import Test4 from './pages/test4/App';
 import Test5 from './pages/test5/App';
+import Test11 from './pages/test/test11/App';
+import Test12 from './pages/test/test12/App';
 /* tasks */
 import TaskIndex from './pages/tasks/App';
 import TaskShow from './pages/tasks/show/App';
@@ -38,6 +40,12 @@ console.log(items);
 });
 app.get('/test5', async (c) => { 
   return c.html(<Test5 />);
+});
+app.get('/test11', async (c) => { 
+  return c.html(<Test11 items={[]} />);
+});
+app.get('/test12', async (c) => { 
+  return c.html(<Test12 items={[]} />);
 });
 /* tasks */
 app.get('/tasks', async (c) => { 

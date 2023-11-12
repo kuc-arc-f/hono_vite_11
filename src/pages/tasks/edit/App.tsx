@@ -1,6 +1,7 @@
 import type { FC } from 'hono/jsx'
 import { html } from 'hono/html'
 import {Layout} from '../../layout';
+import ShowModal from './ShowModal';
 //
 const TaskEdit: FC<{ item: any, id: number }> = (props: { item: any, id: number }) => {
 console.log("#TaskEdit");
@@ -12,6 +13,8 @@ console.log(props.item);
             <a href="/tasks" class="btn-outline-purple ms-2 my-2">back</a>
             <hr class="my-4" />
             <h1 class="text-4xl font-bold">Edit</h1>
+            <button id="show_modal_btn" >[ preview ]</button>
+            <hr class="my-2" />
             <p>ID: {props.item.id}
             , {props.item.createdAt}
             </p>
@@ -31,6 +34,7 @@ console.log(props.item);
             <button id="btn_save" class="btn-purple ms-2 my-2">Save</button>
             <hr class="my-2" />
             <div id="root"></div>
+            <ShowModal />
             {html`
             <script>
             let TaskItemId = ${props.item.id};
@@ -40,13 +44,13 @@ console.log(props.item);
             {/* TS */}
             {import.meta.env.PROD ? (
             <>
-                <script src="/static/TaskShow.js"></script>
-                <script src="/static/TaskEdit.js"></script>
+                <script type="module" src="/static/TaskShow.js"></script>
+                <script type="module" src="/static/TaskEdit.js"></script>
             </>
             ) : (
             <>
-                <script src="/src/client/TaskShow.ts"></script>
-                <script src="/src/client/TaskEdit.ts"></script>
+                <script type="module" src="/src/client/TaskShow.ts"></script>
+                <script type="module" src="/src/client/TaskEdit.ts"></script>
             </>
             )} 
         </div>
@@ -55,6 +59,4 @@ console.log(props.item);
 }
 export default TaskEdit;
 /*
-{html`<script src="/js/tasks/delete.js?${timeStamp}"></script>`}
-{html`<script src="/js/tasks/edit.js?${timeStamp}"></script>`}
 */

@@ -1,3 +1,5 @@
+import { marked } from 'marked';
+import MicroModal from 'micromodal';
 
 //@ts-ignore
 console.log("#TaskEdit.client=", TaskItemId);
@@ -54,6 +56,25 @@ console.log(json);
             throw new Error('Error , addItem');
         }
     },  
+    // showProc
+    /**
+     * startProc
+     * @param
+     *
+     * @return
+     */   
+    showProc:function(){
+        let contentValue = "";
+        const content = document.querySelector('#content') as HTMLInputElement;
+        if(content) {
+            contentValue = content?.value;
+        }
+        //console.log("contentValue=", contentValue);
+        const pre_content_text = document.querySelector('#pre_content_text') as HTMLElement;
+        pre_content_text.innerHTML = contentValue;
+        MicroModal.show('modal-1');
+    },
+
     /**
      * startProc
      * @param
@@ -64,6 +85,7 @@ console.log(json);
     {
         try{
 console.log("#startProc");
+            MicroModal.init();
             const button = document.querySelector('#btn_save') as HTMLElement;
             button.addEventListener('click', async () => {
 console.log("btn_save=");
@@ -72,7 +94,13 @@ console.log("result=", result);
                 if(result === true) {
                     window.location.href = '/tasks';
                 }
-            }); 
+            });
+            //show_modal_btn 
+            const shoWButton = document.querySelector('#show_modal_btn') as HTMLElement;
+            shoWButton?.addEventListener('click', async () => {
+            //console.log("show_modal_btn=");
+                this.showProc();
+            });
         } catch (e) {
             console.error(e);
         }    

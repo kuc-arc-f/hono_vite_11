@@ -10,10 +10,10 @@ export const Layout: FC = (props) => {
       <head>
         <title>{title}</title>
         {/* CSS */}
-        {/* <link href="/static/style.css" rel="stylesheet" /> */}
         {html`
           <link href="/static/globals.css" rel="stylesheet" />
           <link href="/static/main.css" rel="stylesheet" />
+          <link href="/static/micromodal.css" rel="stylesheet" />
         `}        
       </head>
       <div class="text-center py-2">
